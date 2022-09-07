@@ -1,4 +1,5 @@
 # ESP8266 Deauther Version 2
+# Việt Hóa By Duy An
 
 <p align="center">
   <img alt="PICTURE logo" src="https://raw.githubusercontent.com/wiki/spacehuhn/esp8266_deauther/img/deauther_logo.png" width="200">
