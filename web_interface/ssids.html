@@ -1,0 +1,119 @@
+<!--- This software is licensed under the MIT License: https://github.com/spacehuhntech/esp8266_deauther -->
+
+<!Doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.8, minimal-ui">
+	<meta name="theme-color" content="#36393E">
+
+	<meta name="description" content="ESP8266 Deauther">
+	<title>ESP8266 Deauther</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="js/site.js"></script>
+	<script src="js/ssids.js"></script>
+</head>
+
+<body onload="loadLang()">
+	<nav>
+		<ul class="menu">
+			<li><a href="scan.html" data-translate="scan">Quét</a></li>
+			<li><a href="ssids.html" data-translate="ssids">SSID</a></li>
+			<li><a href="attack.html" data-translate="attacks">Tấn Công</a></li>
+			<li><a href="settings.html" data-translate="settings">Cài Đặt</a></li>
+		</ul>
+	</nav>
+
+	<div id="status"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="header" data-translate="ssids">SSID</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label for="ssid">SSID</label>
+			</div>
+			<div class="col-6">
+				<input type="text" id="ssid" name="ssid" placeholder="SSID" maxlength="32">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label>WPA2</label>
+			</div>
+			<div class="col-6">
+				<label class='checkBoxContainer'><input id="enc" type='checkbox'><span class='checkmark'></span></label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label data-translate="number">Số Lượng</label>
+			</div>
+			<div class="col-6">
+				<input id="ssidNum" type="number" value="1" max="60" min="1">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label data-translate="overwrite">Ghi Đè</label>
+			</div>
+			<div class="col-6">
+				<label class='checkBoxContainer'><input id="overwrite" type='checkbox' checked><span
+						class='checkmark'></span></label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<button onclick="add()" data-translate="add">Thêm</button>
+				<button onclick="addSelected()" data-translate="add_selected">clone selected APs</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<button onclick="load()" class="right" data-translate="reload">Reload</button>
+				<p>
+					<span class="red" data-translate="info_span">INFO:</span><br>
+					<span data-translate="ssids_info">
+						- Danh sách SSID này được sử dụng cho cuộc tấn công báo hiệu và thăm dò.<br>
+						- Mỗi SSID có thể có tối đa 32 ký tự.<br>
+						- Đừng quên nhấp vào lưu khi bạn chỉnh sửa SSID.<br>
+						- Bạn phải nhấp vào Tải lại sau khi nhân bản SSID.<br>
+					</span>
+					<span data-translate="info_disclaimer">(!) Trong trường hợp xảy ra lỗi không mong muốn, vui lòng tải lại trang web và xem màn hình nối tiếp để gỡ lỗi thêm.</span><br>
+				</p>
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label for="interval" data-translate="time_interval">Thời Gian Khoảng</label>
+			</div>
+			<div class="col-6">
+				<input id="interval" name="interval" type="number" value="10" max="600" min="1">Giây
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<button onclick="enableRandom()" id="randomBtn">Enable Random Tên</button>
+				<p data-translate="random_desc">Enable the random mode to generate a random SSID list in a given
+					interval.</p>
+				<hr>
+				<table id="ssidTable"></table>
+				<button onclick="removeAll()" class="red" data-translate="remove_all">Xóa Tất Cả</button>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<span id="version">Version 2.6.1 Việt Hóa By Duy An</span>
+		<br>
+		<br>
+		<a href="http://deauther.maltronics.com" target="_blank">Wiki</a> | <a href="info.html">Credits</a>
+	</footer>
+</body>
+
+</html>
